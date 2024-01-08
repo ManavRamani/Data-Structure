@@ -49,7 +49,7 @@ void main()
 	{
 		for (j = 0; j < size; j++)
 		{
-			sum[i][j] = a[i][j] - b[i][j];
+			sub[i][j] = a[i][j] - b[i][j];
 		}
 	}
 	printf("\nSub of Two Matrix : \n");
@@ -57,7 +57,7 @@ void main()
 	{
 		for (j = 0; j < size; j++)
 		{
-			printf("%d\t", sum[i][j]);
+			printf("%d\t", sub[i][j]);
 		}
 		printf("\n");
 	}
