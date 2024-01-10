@@ -12,7 +12,7 @@ void main(){
 	}
 	ptr_arr=arr;
 	for(i=0;i<size;i++){
-		printf("Enter pointer element[%d] : %d\n",i,*(ptr_arr+i));
-		printf("Enter array element[%d] : %d\n",i,(ptr_arr+i));
+		printf("value of pointer element[%d] : %d\n",i,*(ptr_arr+i));
+		printf("value of array element[%d] : %d\n",i,(ptr_arr+i));
 	}
 }
