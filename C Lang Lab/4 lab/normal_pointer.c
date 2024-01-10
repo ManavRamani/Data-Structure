@@ -1,6 +1,6 @@
 // 4.0 Normal pointer :-
 #include<stdio.h>
-#include<stdlib.h>
+
 void main()
 {
 	int var;
