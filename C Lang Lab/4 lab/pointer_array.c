@@ -1,6 +1,6 @@
 // 4.1 Read n number in an array and print it using pointer. [A]
 #include<stdio.h>
-#include<stdlib.h>
+
 void main(){
 	int size,i,j;
 	printf("Enter Array Size : ");
