@@ -17,6 +17,8 @@ struct node *first,*last;
 
 void insert_first(int);
 void insert_last(int);
+int delete_first();
+int delete_last();
 void display();
 
 void main(){
@@ -29,9 +31,10 @@ void main(){
 		printf("2. Insert a node at the end of the list.\n");
 		printf("3. delete the first node of the linked list.\n");
 		printf("4. delete the last node of the linked list.\n");
-		printf("5. display the list.\n");
-		printf("6. count number of nodes.\n");
-		printf("7. for exit.\n\n");
+		printf("5. delete specific node of the linked list.\n");
+		printf("6. display the list.\n");
+		printf("7. count number of nodes.\n");
+		printf("8. for exit.\n\n");
 		
 		printf("Enter Your choice : ");
 		scanf("%d",&choice);
@@ -47,17 +50,27 @@ void main(){
 				insert_last(val);
 				break;
 			case 3:
+				val=delete_first();
+				printf("Delete First : %d\n",val);
 				break;
 			case 4:
+				val=delete_last();
+				printf("Delete Last : %d\n",val);
 				break;
 			case 5:
+				printf("Delete Element value : ");
+				scanf("%d",&val);
+				val=delete_specific(val);
+				printf("Delete Specific : %d\n",val);
+				break;
+			case 6:
 				printf("\nDisplay Data : ");
 				display();
 				break;
-			case 6:
+			case 7:
 				count();
 				break;
-			case 7:
+			case 8:
 				printf("Thank you for visit..!");
 				return;
 			default:
@@ -67,10 +80,13 @@ void main(){
 	}while(choice>0);
 }
 
+// Count :
 void count(){
 	struct node *temp;
 	int count=0;
 	temp=first;
+	
+
 	while(temp->link!=NULL){
 		count++;
 		temp=temp->link;
@@ -79,6 +95,7 @@ void count(){
 	printf("\nNode Count is : %d\n",count);
 }
 
+// Display :
 void display(){
 	struct node *temp;
 	temp=first;
@@ -90,6 +107,83 @@ void display(){
 	printf("%d ]\n",temp->info);
 }
 
+// Delete First :
+int delete_first(){
+	struct node *save;
+	int x;
+	
+	if(first==NULL){
+		printf("Underflow...!\n");
+		return 0;
+	}else{
+		save=first;
+		first=first->link;
+		x=save->info;
+		free(save);
+		return x;
+	}
+}
+
+// Delete Last :
+int delete_last(){
+	struct node *save,*pre;
+	int x;
+	
+	if(first==NULL){
+		printf("Underflow...!\n");
+		return 0;
+	}else{
+		save=pre=first;
+		while(save->link!=NULL){
+			pre=save;
+			save=save->link;
+		}
+		pre->link=NULL;
+		last=pre;
+		x=save->info;
+		free(save);
+		return x;
+	}
+}
+
+
+// Delete Specific :
+int delete_specific(int val){
+	struct node *save,*pre;
+	int x;
+	save=pre=first;
+	if(first==NULL){
+		printf("Underflow...!\n");
+		return 0;
+	}else if(first->link==NULL){
+		if(val==first->info){
+			first=NULL;
+			free(save);
+			return val;	
+		}else{
+			printf("Node Not found...!\n");
+			return 0;
+		}
+	}else if(val==first->info)
+	{
+		first=first->link;
+		free(save);
+		return val;
+	}
+	else{
+		
+		while((save->link!=NULL) &&( val!=save->info)){
+			pre=save;
+			save=save->link;
+		}
+		pre->link=save->link;
+		x=save->info;
+		free(save);
+		return x;
+	}
+}
+
+// Insert First :
 void insert_first(int x){
 	struct node *new_node;
 	new_node=(struct node *)malloc(sizeof(struct node *));
@@ -107,6 +201,7 @@ void insert_first(int x){
 	}
 }
 
+// Insert Last :
 void insert_last(int x){
 	struct node *new_node;
 	new_node=(struct node *)malloc(sizeof(struct node *));
