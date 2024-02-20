@@ -2,9 +2,6 @@
 	13.2 write a menu driven program to implement folloeing oprations on the ordered linked list.
 		- Insert a node such that linked list is in ascending order. [A]
 		- Display the list. [A]
-		- Delete a frist node of the linked list. [B]
-		- Delete a last node of the linked list. [B]
-		- Delete a specific node. [C]
 */
 
 #include<stdio.h>
@@ -25,44 +22,27 @@ void main(){
 	do{
 		printf("\nOrdered Linked list on opration : \n");
 		
-		printf("1. Insert a node at the first of the list.\n");
-		printf("2. delete the first node of the linked list.\n");
-		printf("3. delete the last node of the linked list.\n");
-		printf("4. delete specific node of the linked list.\n");
-		printf("5. display the list.\n");
-		printf("6. count number of nodes.\n");
-		printf("7. for exit.\n\n");
+		printf("1. Insert a node at the Ordered of the list.\n");
+		printf("2. display the list.\n");
+		printf("3. count number of nodes.\n");
+		printf("4. for exit.\n\n");
 		
 		printf("Enter Your choice : ");
 		scanf("%d",&choice);
 		switch(choice){
 			case 1:
-				printf("Enter First Value : ");
+				printf("Enter Value : ");
 				scanf("%d",&val);
 				ordered_insert(val);
 				break;
 			case 2:
-//				val=delete_first();
-				printf("Delete First : %d\n",val);
-				break;
-			case 3:
-//				val=delete_last();
-				printf("Delete Last : %d\n",val);
-				break;
-			case 4:
-				printf("Delete Element value : ");
-				scanf("%d",&val);
-//				val=delete_specific(val);
-				printf("Delete Specific : %d\n",val);
-				break;
-			case 5:
 				printf("\nDisplay Data : ");
 				display();
 				break;
-			case 6:
+			case 3:
 				count();
 				break;
-			case 7:
+			case 4:
 				printf("Thank you for visit..!");
 				return;
 			default:
@@ -126,6 +106,5 @@ void display(){
 	}
 	printf("%d ]\n",temp->info);
 }
-
 
 
